@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
 
         <div class="alert alert-success">
-            <p>Благодарим Вас за обращение к нам. <?= Html::a('Вернуться', Url::current())?></p>
+            <p>Благодарим Вас за Ваш отзыв. <?= Html::a('Вернуться', Url::current())?></p>
         </div>
 
 <?php else: ?>

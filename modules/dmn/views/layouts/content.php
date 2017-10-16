@@ -1,6 +1,7 @@
 <?php
 use yii\widgets\Breadcrumbs;
-use yii\widgets\AlertLte;
+use app\components\AlertWidget;
+use adminlte\widgets\Alert;
 
 ?>
 	  <!-- Content Wrapper. Contains page content -->
@@ -17,6 +18,7 @@ use yii\widgets\AlertLte;
 
         <!-- Main content -->
         <section class="content">
+            <?= Alert::widget() ?>
 			<?= $content ?>
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->

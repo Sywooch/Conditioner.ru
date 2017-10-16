@@ -4,7 +4,7 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'basic',
-    'name' => 'Сплит 24',
+    'name' => 'Керчь - Климат',
     'charset' => 'UTF-8',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
@@ -35,8 +35,8 @@ $config = [
 //            'transport' => [
 //                'class' => 'Swift_SmtpTransport',
 //                'host' => 'smtp.mail.ru',
-//                'username' => 'maxkyivua',
-//                'password' => '19881120allskills',
+//                'username' => 'login',
+//                'password' => 'password',
 //                'port' => '465',
 //                'encryption' => 'ssl',
 //            ],
@@ -65,7 +65,7 @@ $config = [
                 '<controller:(news|about|comments)>/<action:(index)>/<page:\d+>' => '<controller>/<action>',
                 '<controller:(gallery)>/<action:(view)>/<id:\d+>/<page:\d+>' => '<controller>/<action>',
                 '<controller:(news|gallery|about)>/<action:(view|read|update)>/<id:\d+>' => '<controller>/<action>',
-                '/dmn/<controller:(user|news|orders|comments|gallery|photo)>/<action:(view|update|delete|index|create)>/<id:\d+>' => '/dmn/<controller>/<action>',
+                '/dmn/<controller:(user|news|orders|comments|gallery|photo)>/<action:(view|update|delete|index|create|password)>/<id:\d+>' => '/dmn/<controller>/<action>',
 //                //
 //                [
 //                    'pattern' => 'about',

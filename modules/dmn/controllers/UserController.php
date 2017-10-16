@@ -8,6 +8,10 @@
 
 namespace app\modules\dmn\controllers;
 use app\models\SystemUsers;
+use app\models\ChangePasswordForm;
+use yii\base\InvalidParamException;
+use yii\web\BadRequestHttpException;
+use yii\web\NotFoundHttpException;
 use Yii;
 /**
  * Description of UserController
@@ -31,7 +35,7 @@ class UserController extends DefaultController{
         $user = $this->findModel($id);
         //
         if ($user->load(Yii::$app->request->post()) && $user->save()) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
+            Yii::$app->session->setFlash('success', 'Данные успешно обновлены.');
             return $this->refresh();
         }
         //
@@ -48,7 +52,7 @@ class UserController extends DefaultController{
      * Finds the SystemNews model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return SystemNews the loaded model
+     * @return SystemUsers the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
@@ -58,5 +62,23 @@ class UserController extends DefaultController{
         } else {
             throw new NotFoundHttpException('Запрашиваемая страница не найдена.');
         }
+    }
+    //
+    public function actionPassword($id)
+    {
+        //
+        try {
+            $model = new ChangePasswordForm($id);
+        } catch (InvalidParamException $e) {
+            throw new BadRequestHttpException($e->getMessage());
+        }
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->changePassword())
+        {
+            Yii::$app->session->setFlash('success', 'Пароль успешно изменен!');
+            $model->resetForm();
+        }
+        return $this->render('change-password', [
+            'model' => $model,
+        ]);
     }
 }

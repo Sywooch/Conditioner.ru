@@ -9,6 +9,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\helpers\Url;
+use adminlte\widgets\Alert;
 
 AppAsset::register($this);
 ?>
@@ -16,6 +17,7 @@ AppAsset::register($this);
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
+	<meta name="yandex-verification" content="3a394982cd629a04" />
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
@@ -32,11 +34,12 @@ AppAsset::register($this);
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar-default navbar-fixed-top',
+            'id' => 'web-bootstrap-menu',
         ],
     ]);
     if (!Yii::$app->user->isGuest):
-    ?>
+        ?>
         <div class="navbar-form navbar-right">
             <button class="btn btn-sm btn-default"
                     data-container="body"
@@ -52,11 +55,11 @@ AppAsset::register($this);
                     ">
                 <span class="glyphicon glyphicon-user"></span>
             </button>
-        </div>    
-    <?php
+        </div>
+        <?php
     else:
-    ?>
-    <div class="navbar-form navbar-right">
+        ?>
+        <div class="navbar-form navbar-right">
             <button class="btn btn-sm btn-default"
                     data-container="body"
                     data-toggle="popover"
@@ -69,8 +72,8 @@ AppAsset::register($this);
                     ">
                 <span class="glyphicon glyphicon-log-in"></span>
             </button>
-    </div>         
-    <?php
+        </div>
+        <?php
     endif;
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
@@ -81,19 +84,6 @@ AppAsset::register($this);
             ['label' => 'Новости/Акции <span class="glyphicon glyphicon-book"></span>', 'url' => ['/news/index']],
             ['label' => 'Отзывы клиентов <span class="glyphicon glyphicon-comment"></span>', 'url' => ['/comments/index']],
             ['label' => 'Галерея <span class="glyphicon glyphicon-picture"></span>', 'url' => ['/gallery/index']],
-//            ['label' => 'Регистрация <span class="glyphicon glyphicon-check"></span>', 'url' => ['/user/register']],
-//            Yii::$app->user->isGuest ? (
-//                ['label' => 'Вход <span class="glyphicon glyphicon-log-in"></span>', 'url' => ['/user/login']]
-//            ) : (
-//                '<li>'
-//                . Html::beginForm(['/user/logout'], 'post')
-//                . Html::submitButton(
-//                    'Выйти (' . Yii::$app->user->identity->username . ') <span class="glyphicon glyphicon-log-out"></span>',
-//                    ['class' => 'btn btn-link logout']
-//                )
-//                . Html::endForm()
-//                . '</li>'
-//            )
         ],
         'encodeLabels' => FALSE,
     ]);
@@ -104,6 +94,7 @@ AppAsset::register($this);
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
+        <?= Alert::widget() ?>
         <?= $content ?>
     </div>
 </div>
@@ -116,11 +107,10 @@ AppAsset::register($this);
             <span class="glyphicon glyphicon-copyright-mark"></span>
 
             2017 - <?= date('Y') ?>
-            <a title="&quot;Вконтакте&quot;" href="https://vk.com/pimpys" target="_blank">&nbsp;"Заказать сайт."</a> Моб. тел: +7-978-051-57-37
 
             </p>
         </span>
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right"></p>
     </div>
 </footer>
 

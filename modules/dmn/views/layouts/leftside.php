@@ -46,7 +46,7 @@ use yii\helpers\Url;
                         ],
                         [
                             'label' => 'Материалы',
-                            'icon' => 'fa fa-database',
+                            'icon' => 'fa fa-align-justify',
                             'url' => '#',
                             'items' => [
                                 [
@@ -75,6 +75,7 @@ use yii\helpers\Url;
                             'url' => ['/dmn/user/index'],
                             'active' => $this->context->route == 'dmn/user/index',
                         ],
+                        ['label' => 'БД', 'icon' => 'fa fa-database', 'url' => ['/sxd'],],
                         ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii'],],
                         ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug'],],
                     ],

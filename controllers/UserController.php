@@ -5,6 +5,7 @@ use app\models\SystemUsers;
 use app\models\RegForm;
 use app\models\LoginForm;
 use Yii;
+use yii\helpers\Html;
 use app\models\SendEmailForm;
 use app\models\ResetPasswordForm;
 use yii\base\InvalidParamException;
@@ -64,23 +65,27 @@ class UserController extends BaseController
         Yii::$app->user->logout();
         return $this->redirect(['/user/login']);
     }
-    //
+    //Отправка Емаил, для сброса пароля!
     public function actionSendEmail()
     {
+        //Создаем форму
         $model = new SendEmailForm();
-
+        //Если нажали кнопку "Отправить"
         if ($model->load(Yii::$app->request->post())) {
+            //Если ошибок нет, емеил введен коректно и найден
             if ($model->validate()) {
+                //Если письмо удачно отправлено
                 if ($model->sendEmail()) {
-                    Yii::$app->session->setFlash('warning');
+                    Yii::$app->session->setFlash('success', 'Вам было отправленно письмо с инструкциями для сброса пароля!
+</br>Проверте свой email.');
                     return $this->refresh();
                 } else {
-                    Yii::$app->session->setFlash('error');
+                    Yii::$app->session->setFlash('error', 'Произошла ошибка! Пароль збросить нельзя!');
                     return $this->refresh();
                 }
             }
         }
-
+        //Выодим вид
         return $this->render('send-email', [
             'model' => $model,
         ]);
@@ -96,8 +101,10 @@ class UserController extends BaseController
         //
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate() && $model->resetPassword()) {
-                Yii::$app->session->setFlash('warning');
-                $this->refresh();
+                $link = Html::a('Войти', ['user/login']);
+                Yii::$app->session->setFlash('success', 'Пароль успешно изменен! ' . $link);
+
+                return $this->goHome();
             }
         }
         //

@@ -36,7 +36,7 @@ class GalleryController extends BaseController
         ])->count();
         $pages = new Pagination([
             'totalCount' => $count,
-            'defaultPageSize' => 10,
+            'defaultPageSize' => 9,
         ]);
         $photo = $model->find()->where([
             'hide' => 'show',

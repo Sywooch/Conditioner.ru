@@ -2,9 +2,8 @@
 
 return [
     'class' => 'yii\db\Connection',
-//    'dsn' => 'mysql:host=localhost;dbname=kerch',
-    'dsn' => 'mysql:host=localhost;dbname=conditioner_yii2',
+    'dsn' => 'mysql:host=localhost;dbname=conditioner_yii2',,
     'username' => 'root',
-    'password' => '',
+    'password' => 'password',
     'charset' => 'utf8',
 ];

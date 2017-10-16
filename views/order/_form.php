@@ -9,14 +9,6 @@ use yii\captcha\Captcha;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <div class="site-contact">
-    <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
-
-        <div class="alert alert-success">
-            <h4>Благодарим Вас за обращение к нам. Мы постараемся ответить вам как можно скорее.</h4>
-            <p>Наши менеджеры свяжутся с Вами по номеру телефона, который Вы нам сообщили и обсудят с вами дату/время выполнения заказа!</p>
-        </div>
-
-    <?php else: ?>
 
         <p>
             Вы можете заказать услугу монтажа(установка)/чистки/дозаправки, заполнив данными нижние поля.
@@ -56,6 +48,4 @@ use yii\captcha\Captcha;
 
             </div>
         </div>
-
-    <?php endif; ?>
 </div>

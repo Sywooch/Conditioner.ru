@@ -1,5 +1,6 @@
 Options +FollowSymLinks
 IndexIgnore */*
+AddDefaultCharset UTF-8
 RewriteEngine on
 
 RewriteCond %{REQUEST_URI} !^/(web)
@@ -9,8 +10,6 @@ RewriteRule ^js/(.*)$ web/js/$1 [L]
 RewriteRule ^font/(.*)$ web/font/$1 [L]
 RewriteRule ^images/(.*)$ web/images/$1 [L]
 RewriteRule ^img/(.*)$ web/img/$1 [L]
-RewriteRule ^bg/(.*)$ web/bg/$1 [L]
-RewriteRule ^tables/(.*)$ web/tables/$1 [L]
 RewriteRule (.*) /web/$1
 
 RewriteCond %{REQUEST_FILENAME} !-f

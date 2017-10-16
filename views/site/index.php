@@ -1,6 +1,10 @@
 <?php
 
 /* @var $this yii\web\View */
+$this->registerMetaTag([
+    'name' => 'description',
+    'content' => 'Мы предоставляем услуги по Монтажу, Заправке, Чистке сплит систем в городе Керчь и области!'
+]);
 
 $this->title = Yii::$app->name;
 ?>

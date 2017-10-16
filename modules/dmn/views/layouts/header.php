@@ -140,14 +140,15 @@ $count['order'] = $order->find()->where(['hide' => 'show'])->count();
                     <?= Html::img('@web/img/user2-160x160.jpg', ['class' => 'img-circle', 'alt'=>'User Image']) ?>
                     <p>
                         <?=Yii::$app->user->identity->username?>
-                      <small>Зарегистрирован: Nov. 2012</small>
+                        <small>Зарегистрирован: <?php echo date('j-m-Y', Yii::$app->user->identity->created_at) ?></small>
+                        <small>Профиль обновлялся: <?php echo date('j-m-Y', Yii::$app->user->identity->updated_at) ?></small>
                     </p>
                   </li>
 
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
+                      <a href="#" class="btn btn-default btn-flat">Профиль</a>
                     </div>
                     <div class="pull-right">
                         <?php
